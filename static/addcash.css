@@ -1,0 +1,206 @@
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body styling */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    color: #333;
+}
+
+/* Header styling */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: #2e7d32;
+    color: #ffffff;
+    padding: 1em;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Header title */
+header h1 {
+    margin-bottom: 0.5em;
+    font-size: 1.8em;
+}
+
+/* Navbar styling */
+.navbar {
+    width: 100%;
+    background-color: #2e7d32; /* Dark green to match the header */
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around; /* Space items evenly across the navbar */
+    list-style-type: none;
+    padding: 0.5em 0; /* Add padding for a bit of height */
+    margin: 0; /* Remove default margin */
+}
+
+nav ul li {
+    flex-grow: 1; /* Ensure items take equal space */
+    text-align: center;
+}
+
+nav ul li a {
+    display: inline-block;
+    width: 100%; /* Full width for each link */
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0.5em 0;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+    text-align: center; /* Center text */
+}
+
+nav ul li a:hover {
+    background-color: #388e3c; /* Darker green on hover */
+}
+/* Main container styling */
+main {
+    width: 90%;
+    max-width: 400px;
+    margin-top: 2em;
+}
+
+/* Add Cash Form styling */
+.add-cash-form {
+    background: #ffffff;
+    padding: 2em;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.add-cash-form h2 {
+    margin-bottom: 1em;
+    color: #2e7d32;
+    text-align: center;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5em;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.5em;
+}
+
+.form-group input {
+    padding: 0.5em;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    background-color: #f1f8f5;
+    color: #333;
+}
+
+/* Button styling */
+button {
+    width: 100%;
+    padding: 0.7em;
+    background-color: #2e7d32;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    background-color: #388e3c;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    /* Stack navbar items vertically on smaller screens */
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li a {
+        padding: 0.5em 1.5em; /* Larger padding for touch devices */
+    }
+
+    /* Adjust main container width */
+    main {
+        width: 95%;
+    }
+
+    /* Adjust form and text size */
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    button {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Reduce padding and font size on very small screens */
+    header {
+        padding: 0.5em;
+    }
+
+    header h1 {
+        font-size: 1.2em;
+    }
+
+    .add-cash-form {
+        padding: 1em;
+    }
+
+    button {
+        padding: 0.6em;
+        font-size: 0.85em;
+    }
+
+    .form-group label {
+        font-size: 0.9em;
+    }
+
+    nav ul li a {
+        padding: 0.4em 1em;
+    }
+}
+.cash-flow-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5em;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cash-flow-table th, .cash-flow-table td {
+    padding: 0.8em;
+    border: 1px solid #e0e0e0;
+    text-align: left;
+}
+
+.cash-flow-table th {
+    background-color: #2e7d32;
+    color: #ffffff;
+}
+
+.cash-flow-table tr:nth-child(even) {
+    background-color: #f1f8f5;
+}
+
+.cash-flow-table tr:hover {
+    background-color: #e0f2f1;
+}

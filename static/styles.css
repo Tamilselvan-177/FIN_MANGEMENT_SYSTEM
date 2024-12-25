@@ -1,0 +1,199 @@
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body styling */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+/* Header styling */
+header {
+    width: 100%; /* Full-width header */
+    background-color: #2e7d32; /* Dark green */
+    color: #ffffff;
+    padding: 1em;
+    text-align: center;
+}
+
+/* Full-width navbar */
+.navbar {
+    width: 100%;
+    background-color: #2e7d32; /* Dark green to match the header */
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around; /* Space items evenly across the navbar */
+    list-style-type: none;
+    padding: 0.5em 0; /* Add padding for a bit of height */
+    margin: 0; /* Remove default margin */
+}
+
+nav ul li {
+    flex-grow: 1; /* Ensure items take equal space */
+    text-align: center;
+}
+
+nav ul li a {
+    display: inline-block;
+    width: 100%; /* Full width for each link */
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0.5em 0;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+    text-align: center; /* Center text */
+}
+
+nav ul li a:hover {
+    background-color: #388e3c; /* Darker green on hover */
+}
+
+/* Main container styling */
+main {
+    width: 90%;
+    max-width: 600px;
+    margin-top: 2em;
+}
+
+/* Expense category form styling */
+.expense-category {
+    background: #ffffff;
+    padding: 2em;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2em;
+}
+
+.expense-category h2 {
+    margin-bottom: 1em;
+    color: #2e7d32; /* Green */
+    text-align: center;
+}
+
+.expense-item {
+    display: flex;
+    flex-direction: column; /* Stack items vertically for smaller screens */
+    margin-bottom: 1em;
+}
+
+.expense-item label {
+    font-weight: bold;
+    color: #555;
+}
+
+.expense-item input,
+.expense-item select {
+    width: 100%; /* Full width for inputs */
+    padding: 0.5em;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Button styling */
+button {
+    width: 100%;
+    padding: 0.7em;
+    background-color: #4CAF50; /* Green */
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #45a049; /* Darker green */
+}
+
+/* Expense list styling */
+.expense-list {
+    background: #ffffff;
+    padding: 2em;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.expense-list:hover {
+    transform: scale(1.02);
+}
+
+.expense-list h2 {
+    margin-bottom: 1em;
+    color: #2e7d32; /* Green */
+    text-align: center;
+}
+
+/* Table styling */
+.expense-list table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1em;
+}
+
+.expense-list th,
+.expense-list td {
+    padding: 0.8em;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+.expense-list th {
+    background-color: #e8f5e9; /* Light green background */
+    color: #2e7d32; /* Dark green text */
+}
+
+.expense-list td {
+    color: #555;
+}
+
+.expense-list tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.expense-list tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Styling for the "No expenses found" message */
+.expense-list td[colspan="4"] {
+    text-align: center;
+    color: #888;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column; /* Stack links vertically on smaller screens */
+        align-items: center; /* Center items */
+    }
+
+    nav ul li {
+        min-width: auto; /* Remove min-width for smaller screens */
+        width: 100%; /* Full width for list items */
+    }
+
+    .expense-item {
+        flex-direction: column; /* Stack items vertically */
+    }
+
+    .expense-item input,
+    .expense-item select {
+        width: 100%; /* Full width for inputs */
+    }
+
+    main {
+        width: 95%; /* Adjust main width for smaller screens */
+    }
+}

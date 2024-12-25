@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../static/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-U9XYHCIvD7Dz2GlP0umjOGw8WxU8Mke8Gk1KgBBdePRwsM9ktd2Whbi7W+epxq/9+K6x+yil+bm9WOsFhRStCw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header>
+        <h1>Financial Management System</h1>
+        <nav class="navbar">
+            <ul>
+                <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+                <li><a href="{{ url_for('add_cash') }}">Add Cash</a></li>
+                <li><a href="{{ url_for('track_expenses') }}" class="{% if request.endpoint == 'track_expenses' %}active{% endif %}">Track Expenses</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            </ul>
+        </nav>
+        <p>Welcome, {{ username }}!</p>
+    </header>
+    
+    <main>
+        <section class="balance-summary">
+            <h2>Balance Overview</h2>
+            <p>Total Balance: ₹<span id="total-balance">{{ total_balance if total_balance else 0 }}</span></p>
+        </section>
+        <section class="expense-summary">
+            <h2>Expense Categories</h2>
+            {% if expenses_summary %}
+                {% for expense in expenses_summary %}
+                <div class="expense-category">
+                    {% if expense.category == 'Shopping' %}
+                        <i class="fas fa-shopping-cart"></i>
+                    {% elif expense.category == 'Rent' %}
+                        <i class="fas fa-home"></i>
+                    {% else %}
+                        <i class="fas fa-tag"></i>  <!-- Default icon for other categories -->
+                    {% endif %}
+                    <p>{{ expense.category }}: ₹{{ expense.total_amount }}</p>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="expense-category">
+                    <p>No expenses recorded.</p>
+                </div>
+            {% endif %}
+        </section>
+    </main>
+</body>
+</html>

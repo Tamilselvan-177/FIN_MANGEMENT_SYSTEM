@@ -1,0 +1,232 @@
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body styling */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    color: #333;
+}
+
+/* Header styling */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #2e7d32; /* Dark green */
+    color: #ffffff;
+    padding: 1em;
+    text-align: center;
+    width: 100%; /* Full-width header */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin-bottom: 0.5em;
+}
+
+/* Navbar styling */
+.navbar {
+    width: 100%;
+    background-color: #2e7d32; /* Dark green to match the header */
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around; /* Space items evenly across the navbar */
+    list-style-type: none;
+    padding: 0.5em 0; /* Add padding for a bit of height */
+    margin: 0; /* Remove default margin */
+}
+
+nav ul li {
+    flex-grow: 1; /* Ensure items take equal space */
+    text-align: center;
+}
+
+nav ul li a {
+    display: inline-block;
+    width: 100%; /* Full width for each link */
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0.5em 0;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+    text-align: center; /* Center text */
+}
+
+nav ul li a:hover {
+    background-color: #388e3c; /* Darker green on hover */
+}
+/* Main container styling */
+main {
+    width: 90%;
+    max-width: 600px; /* Maximum width for main content */
+    margin-top: 2em; /* Space above main content */
+}
+
+/* Summary boxes styling */
+.balance-summary, .expense-summary {
+    background: #ffffff; /* Background color */
+    padding: 1.5em; /* Padding inside the boxes */
+    border-radius: 8px; /* Rounded corners */
+    margin-bottom: 1.5em; /* Space below each summary */
+    border: 1px solid #e0e0e0; /* Light border */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
+}
+
+h2 {
+    color: #2e7d32; /* Heading color */
+    margin-bottom: 0.5em; /* Space below headings */
+}
+
+.balance-summary p {
+    font-size: 1.4em; /* Larger font size for balance summary */
+    color: #333; /* Text color */
+}
+
+/* Expense category styling */
+.expense-category {
+    display: flex;
+    align-items: center; /* Center items vertically */
+    background-color: #f1f8f5; /* Light background for categories */
+    padding: 1em; /* Padding inside expense category */
+    border-radius: 8px; /* Rounded corners */
+    margin-top: 0.7em; /* Space above expense category */
+    border-left: 5px solid #2e7d32; /* Left border color */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow */
+}
+
+.icon {
+    font-size: 1.5em; /* Icon size */
+    color: #2e7d32; /* Icon color */
+    margin-right: 1em; /* Space between icon and text */
+}
+
+.expense-category p {
+    color: #333; /* Text color for category */
+    font-size: 1.2em; /* Font size */
+}
+
+/* Button styling */
+button {
+    width: 100%; /* Full width */
+    padding: 0.7em; /* Padding for buttons */
+    background-color: #4CAF50; /* Green background */
+    color: #ffffff; /* White text */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 1em; /* Font size */
+    transition: background-color 0.2s; /* Smooth transition for hover */
+}
+
+button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+/* Expense list styling */
+.expense-list {
+    background: #ffffff; /* Background color */
+    padding: 2em; /* Padding inside expense list */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow */
+    transition: transform 0.2s; /* Transition for scale effect */
+}
+
+.expense-list:hover {
+    transform: scale(1.02); /* Scale effect on hover */
+}
+
+.expense-list h2 {
+    margin-bottom: 1em; /* Space below heading */
+    color: #2e7d32; /* Heading color */
+    text-align: center; /* Center text */
+}
+
+/* Table styling */
+.expense-list table {
+    width: 100%; /* Full width table */
+    border-collapse: collapse; /* Collapse borders */
+    margin-top: 1em; /* Space above table */
+}
+
+.expense-list th,
+.expense-list td {
+    padding: 0.8em; /* Padding inside table cells */
+    border-bottom: 1px solid #ddd; /* Light border below cells */
+    text-align: left; /* Left align text */
+}
+
+.expense-list th {
+    background-color: #e8f5e9; /* Light green background for headers */
+    color: #2e7d32; /* Dark green text */
+}
+
+.expense-list td {
+    color: #555; /* Text color */
+}
+
+.expense-list tr:nth-child(even) {
+    background-color: #f9f9f9; /* Light background for even rows */
+}
+
+.expense-list tr:hover {
+    background-color: #f1f1f1; /* Light gray on hover */
+}
+
+/* Styling for the "No expenses found" message */
+.expense-list td[colspan="4"] {
+    text-align: center; /* Center text */
+    color: #888; /* Gray color */
+}
+
+.expense-category {
+    display: flex;
+    align-items: center;  /* Align items vertically */
+    margin: 10px 0;      /* Space between categories */
+}
+
+.expense-category i {
+    margin-right: 8px;   /* Space between icon and text */
+    color: #007bff;      /* Change this color as needed */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 600px) {
+    nav ul {
+        flex-direction: column; /* Stack links vertically */
+        align-items: center; /* Center items */
+        gap: 0.5em; /* Space between stacked items */
+    }
+
+    nav ul li a {
+        width: 100%; /* Full width for list items */
+        text-align: center; /* Center text */
+    }
+
+    main {
+        width: 95%; /* Adjust main width for smaller screens */
+    }
+
+    .expense-item {
+        flex-direction: column; /* Stack items vertically */
+    }
+
+    .expense-item input,
+    .expense-item select {
+        width: 100%; /* Full width for inputs */
+    }
+}
+.icon {
+    font-size: 1.5em; /* Icon size */
+    color: #2e7d32; /* Icon color */
+    margin-right: 1em; /* Space between icon and text */
+}

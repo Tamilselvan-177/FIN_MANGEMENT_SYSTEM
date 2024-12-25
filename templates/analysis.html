@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            background-color: white;
+            color: #2e7d32; /* Dark green for text */
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin: 50px;
+            text-align: center;
+        }
+        canvas {
+            max-width: 800px;
+            margin: 20px auto;
+            background: #e8f5e9; /* Light green background for charts */
+            border-radius: 8px;
+            padding: 20px;
+        }
+        h2 {
+            color: #388e3c; /* Primary green heading */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Financial Analysis for {{ username }}</h2>
+        
+        <!-- Total Cash vs Expenses Pie Chart -->
+        <canvas id="totalPieChart"></canvas>
+
+        <!-- Monthly Expenses Bar Chart -->
+        <canvas id="monthlyExpensesChart"></canvas>
+    </div>
+
+    <script>
+        // Total Cash vs Expenses Data
+        const totalPieData = {
+            labels: ['Total Cash', 'Total Expenses'],
+            datasets: [{
+                data: [{{ total_cash }}, {{ total_expenses }}],
+                backgroundColor: ['#66bb6a', '#ef5350'],
+            }]
+        };
+
+        const pieConfig = {
+            type: 'pie',
+            data: totalPieData,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'top' }
+                }
+            }
+        };
+        const totalPieChart = new Chart(document.getElementById('totalPieChart'), pieConfig);
+
+        // Monthly Expenses Data
+        const monthlyLabels = Object.keys({{ monthly_expenses_data | tojson }});
+        const categoryLabels = Array.from(new Set(
+            Object.values({{ monthly_expenses_data | tojson }}).flatMap(month => Object.keys(month))
+        ));
+        const monthlyDatasets = categoryLabels.map(category => {
+            return {
+                label: category,
+                data: monthlyLabels.map(month => {{ monthly_expenses_data | tojson }}[month][category] || 0),
+                backgroundColor: '#' + Math.floor(Math.random()*16777215).toString(16)
+            };
+        });
+
+        const barConfig = {
+            type: 'bar',
+            data: {
+                labels: monthlyLabels,
+                datasets: monthlyDatasets
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'top' }
+                }
+            }
+        };
+        const monthlyExpensesChart = new Chart(document.getElementById('monthlyExpensesChart'), barConfig);
+    </script>
+</body>
+</html>

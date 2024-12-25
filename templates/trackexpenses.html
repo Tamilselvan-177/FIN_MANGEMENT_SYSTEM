@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Management System</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Financial Management System</h1>
+        <nav class="navbar">
+            <ul>
+                <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+                <li><a href="{{ url_for('add_cash') }}">Add Cash</a></li>
+                <li><a href="{{ url_for('track_expenses') }}" class="{% if request.endpoint == 'track_expenses' %}active{% endif %}">Track Expenses</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            </ul>
+            
+        </nav>
+        <p> Name: {{ username }}!</p> 
+    </header>
+    
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+        <main>
+            <section class="expense-category">
+                <h2>Track Expenses</h2>
+                <form action="/addexpense" method="POST">
+                    <div class="expense-item">
+                        <label for="category">Category:</label>
+                        <select id="category" name="category" required>
+                            <option value="shopping">Shopping</option>
+                            <option value="medical">Medical</option>
+                            <option value="food">Food</option>
+                            <option value="rent">Rent</option>
+                            <option value="others">Others</option>
+                        </select>
+                    </div>
+                    <div class="expense-item">
+                        <label for="amount">Amount:</label>
+                        <input type="number" id="amount" name="amount" placeholder="Amount" required>
+                    </div>
+                    <button type="submit">Save Expense</button>
+                </form>
+            </section>
+
+            <section class="expense-list">
+                <h2>Your Expenses</h2>
+                <table>
+                    <thead>
+                        <tr>
+                        
+                            <th>Category</th>
+                            <th>Amount</th>
+                            <th>Date Added</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if expenses %}
+                            {% for expense in expenses %}
+                                <tr>
+                                    
+                                    <td>{{ expense.category }}</td>
+                                    <td>{{ expense.amount }}</td>
+                                    <td>{{ expense.date.strftime('%Y-%m-%d') }}</td>
+                                </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td colspan="4">No expenses found.</td>
+                            </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </section>
+        </main>
+
+        <!-- Optional footer for additional information -->
+        <footer>
+            <p>&copy; 2024 Financial Management System. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
